@@ -509,3 +509,8 @@ footer{
   gap: 12px;
   width: 100%;
 }
+
+.logo-j {
+  text-decoration: none;
+  color: #0d1b2a;
+}
