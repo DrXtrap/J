@@ -74,6 +74,7 @@ img{
 }
 
 @keyframes drift{
+
   0%,100%{
     transform:translateX(0);
   }
@@ -81,6 +82,7 @@ img{
   50%{
     transform:translateX(40px);
   }
+
 }
 
 /* HEADER */
@@ -91,14 +93,39 @@ header{
   left:0;
   right:0;
   z-index:100;
+
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
+
   padding:22px 48px;
+
   background:rgba(184,212,232,.55);
   backdrop-filter:blur(16px);
+
   border-bottom:1px solid rgba(255,255,255,.4);
 }
+
+/* LOGO */
+
+.logo-j{
+  position:absolute;
+
+  left:90px;
+
+  font-family:'Cinzel',serif;
+  font-size:34px;
+  font-weight:700;
+
+  color:#0d1b2a;
+
+  line-height:1;
+
+  text-shadow:
+    0 8px 24px rgba(0,0,0,.08);
+}
+
+/* NAV */
 
 nav{
   display:flex;
@@ -108,10 +135,13 @@ nav{
 nav a{
   color:#0d1b2a;
   text-decoration:none;
+
   font-size:13px;
   letter-spacing:3px;
   text-transform:uppercase;
+
   font-weight:600;
+
   opacity:.7;
   transition:.3s;
 }
@@ -125,11 +155,15 @@ nav a:hover{
 #hero{
   position:relative;
   z-index:1;
+
   min-height:100vh;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   gap:140px;
+
   padding:120px 8vw 80px;
 }
 
@@ -141,60 +175,68 @@ nav a:hover{
   width:38vw;
   max-width:620px;
   min-width:420px;
+
   aspect-ratio:1/1;
+
   object-fit:cover;
   object-position:center top;
+
   border-radius:12px;
+
   box-shadow:0 30px 80px rgba(0,0,0,.18);
 }
 
 .hero-info{
   display:flex;
   flex-direction:column;
-  gap:18px;
+  gap:24px;
+
   max-width:700px;
+}
+
+.lancamento-info{
+  display:flex;
+  flex-direction:column;
+  gap:24px;
 }
 
 .hero-label{
   font-size:14px;
+
   letter-spacing:5px;
   text-transform:uppercase;
+
   color:#5a8faa;
+
   font-weight:600;
 }
 
-.hero-info h1{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(180px,14vw,320px);
-  line-height:.85;
-  letter-spacing:10px;
+#spotify-player{
+  width:100%;
+  max-width:520px;
+
+  border:none;
+
+  box-shadow:0 20px 60px rgba(0,0,0,.12);
 }
 
-.hero-musica{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(52px,4vw,90px);
-  letter-spacing:4px;
-  line-height:1;
-}
-
-.hero-sub{
-  font-size:15px;
-  letter-spacing:3px;
-  color:#5a8faa;
-  text-transform:uppercase;
-  font-weight:600;
-}
+/* BOTÕES */
 
 .btn-ouvir,
 .btn-booking{
   width:fit-content;
+
   padding:16px 38px;
+
   text-decoration:none;
   text-transform:uppercase;
+
   letter-spacing:3px;
   font-size:13px;
   font-weight:600;
+
   border-radius:3px;
+
   transition:.3s;
 }
 
@@ -224,7 +266,9 @@ nav a:hover{
 #contato{
   position:relative;
   z-index:1;
+
   padding:100px 8vw;
+
   max-width:1800px;
   margin:0 auto;
 }
@@ -233,8 +277,11 @@ nav a:hover{
 #fotos h2,
 #contato h2{
   font-family:'Bebas Neue',sans-serif;
+
   font-size:clamp(72px,6vw,120px);
+
   letter-spacing:5px;
+
   margin-bottom:40px;
 }
 
@@ -242,8 +289,11 @@ nav a:hover{
 
 .musicas-grid{
   display:grid;
+
   grid-template-columns:repeat(2,1fr);
+
   gap:16px;
+
   max-width:1200px;
 }
 
@@ -251,16 +301,22 @@ nav a:hover{
 
 .fotos-grid{
   display:grid;
+
   grid-template-columns:repeat(3,1fr);
+
   gap:20px;
 }
 
 .fotos-grid img{
   width:100%;
+
   aspect-ratio:3/4;
+
   object-fit:cover;
   object-position:center top;
+
   border-radius:12px;
+
   transition:transform .3s;
 }
 
@@ -276,28 +332,38 @@ nav a:hover{
 
 .contato-sub{
   font-size:13px;
+
   letter-spacing:3px;
   text-transform:uppercase;
+
   color:#5a8faa;
+
   margin-bottom:40px;
 }
 
 .contato-links{
   display:flex;
   justify-content:center;
+
   gap:18px;
+
   flex-wrap:wrap;
 }
 
 .contato-btn{
   padding:16px 40px;
+
   border:1.5px solid #0d1b2a;
+
   color:#0d1b2a;
+
   text-decoration:none;
   text-transform:uppercase;
+
   letter-spacing:3px;
   font-size:12px;
   font-weight:600;
+
   transition:.3s;
 }
 
@@ -311,11 +377,16 @@ nav a:hover{
 footer{
   position:relative;
   z-index:1;
+
   padding:32px;
+
   text-align:center;
+
   font-size:12px;
   letter-spacing:2px;
+
   color:#5a8faa;
+
   border-top:1px solid rgba(255,255,255,.5);
 }
 
@@ -326,6 +397,14 @@ footer{
   header{
     padding:16px 20px;
   }
+
+  .logo-j{
+  position:static;
+
+  font-size:28px;
+
+  margin-right:auto;
+}
 
   nav{
     gap:20px;
@@ -338,14 +417,24 @@ footer{
 
   #hero{
     flex-direction:column;
+
     text-align:center;
+
     gap:40px;
+
     padding:120px 20px 60px;
+
     min-height:auto;
   }
 
   .hero-info{
     align-items:center;
+    width:100%;
+  }
+
+  .lancamento-info{
+    align-items:center;
+    width:100%;
   }
 
   .album-cover{
@@ -354,24 +443,17 @@ footer{
     min-width:auto;
   }
 
-  .hero-info h1{
-    font-size:110px;
-    letter-spacing:6px;
-  }
-
-  .hero-musica{
-    font-size:48px;
-  }
-
-  .hero-sub{
-    font-size:13px;
+  #spotify-player{
+    max-width:100%;
   }
 
   .btn-ouvir,
   .btn-booking{
     width:100%;
     max-width:320px;
+
     text-align:center;
+
     font-size:11px;
   }
 
@@ -404,6 +486,7 @@ footer{
   .contato-btn{
     width:100%;
     max-width:300px;
+
     text-align:center;
   }
 
