@@ -1,4 +1,6 @@
 const carrossel = document.getElementById('yt-carrossel');
+const btnEsq = document.getElementById('yt-esq');
+const btnDir = document.getElementById('yt-dir');
 
 function scrollSuave(destino) {
   const inicio = carrossel.scrollLeft;
@@ -14,12 +16,28 @@ function scrollSuave(destino) {
   requestAnimationFrame(animar);
 }
 
-document.getElementById('yt-dir').addEventListener('click', () => {
+function atualizarSetas() {
+  const noInicio = carrossel.scrollLeft <= 4;
+  const noFim = carrossel.scrollLeft + carrossel.clientWidth >= carrossel.scrollWidth - 4;
+
+  btnEsq.style.opacity = noInicio ? '0' : '1';
+  btnEsq.style.pointerEvents = noInicio ? 'none' : 'auto';
+
+  btnDir.style.opacity = noFim ? '0' : '1';
+  btnDir.style.pointerEvents = noFim ? 'none' : 'auto';
+}
+
+btnDir.addEventListener('click', () => {
   const item = carrossel.querySelector('.yt-item');
   scrollSuave(carrossel.scrollLeft + item.offsetWidth + 24);
+  setTimeout(atualizarSetas, 650);
 });
 
-document.getElementById('yt-esq').addEventListener('click', () => {
+btnEsq.addEventListener('click', () => {
   const item = carrossel.querySelector('.yt-item');
   scrollSuave(carrossel.scrollLeft - item.offsetWidth - 24);
+  setTimeout(atualizarSetas, 650);
 });
+
+carrossel.addEventListener('scroll', atualizarSetas);
+atualizarSetas();

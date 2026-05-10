@@ -591,7 +591,7 @@ footer{
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 20px rgba(0,0,0,.18);
-  transition: transform .2s, box-shadow .2s;
+  transition: transform .2s, box-shadow .2s, opacity .3s;
 }
 
 .seta-yt:hover {
