@@ -22,8 +22,6 @@ img{
   display:block;
 }
 
-/* SKY */
-
 .sky{
   position:fixed;
   inset:0;
@@ -85,8 +83,6 @@ img{
 
 }
 
-/* HEADER */
-
 header{
   position:fixed;
   top:0;
@@ -106,8 +102,6 @@ header{
   border-bottom:1px solid rgba(255,255,255,.4);
 }
 
-/* LOGO */
-
 .logo-j{
   position:absolute;
 
@@ -124,8 +118,6 @@ header{
   text-shadow:
     0 8px 24px rgba(0,0,0,.08);
 }
-
-/* NAV */
 
 nav{
   display:flex;
@@ -149,8 +141,6 @@ nav a{
 nav a:hover{
   opacity:1;
 }
-
-/* HERO */
 
 #hero{
   position:relative;
@@ -220,12 +210,12 @@ nav a:hover{
   box-shadow:0 20px 60px rgba(0,0,0,.12);
 }
 
-.hero-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
+.hero-buttons{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:12px;
+  width:100%;
 }
 
 .btn-booking{
@@ -237,8 +227,6 @@ nav a:hover{
   background:#0d1b2a;
   color:#fff;
 }
-
-/* SEÇÕES */
 
 #musicas,
 #fotos,
@@ -264,8 +252,6 @@ nav a:hover{
   margin-bottom:40px;
 }
 
-/* MUSICAS */
-
 .musicas-grid{
   display:grid;
 
@@ -275,8 +261,6 @@ nav a:hover{
 
   max-width:1200px;
 }
-
-/* FOTOS */
 
 .fotos-grid{
   display:grid;
@@ -302,8 +286,6 @@ nav a:hover{
 .fotos-grid img:hover{
   transform:scale(1.02);
 }
-
-/* CONTATO */
 
 #contato{
   text-align:center;
@@ -351,8 +333,6 @@ nav a:hover{
   color:#fff;
 }
 
-/* FOOTER */
-
 footer{
   position:relative;
   z-index:1;
@@ -368,8 +348,6 @@ footer{
 
   border-top:1px solid rgba(255,255,255,.5);
 }
-
-/* RESPONSIVO */
 
 @media(max-width:768px){
 
@@ -478,94 +456,90 @@ footer{
 
 }
 
-/* BOTÃO OUVIR MAIS NO SPOTIFY */
-
-.btn-spotify-mais-wrapper {
-  text-align: center;
-  margin-top: 32px;
+.btn-spotify-mais-wrapper{
+  text-align:center;
+  margin-top:32px;
 }
 
-.btn-spotify-mais {
-  display: inline-block;
-  padding: 14px 36px;
-  border: 1.5px solid #0d1b2a;
-  color: #0d1b2a;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 12px;
-  font-weight: 600;
-  border-radius: 3px;
-  transition: .3s;
+.btn-spotify-mais{
+  display:inline-block;
+  padding:14px 36px;
+  border:1.5px solid #0d1b2a;
+  color:#0d1b2a;
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:3px;
+  font-size:12px;
+  font-weight:600;
+  border-radius:3px;
+  transition:.3s;
 }
 
-.btn-spotify-mais:hover {
-  background: #0d1b2a;
-  color: #fff;
+.btn-spotify-mais:hover{
+  background:#0d1b2a;
+  color:#fff;
 }
 
-/* CARROSSEL YOUTUBE */
-
-.yt-carrossel-wrapper {
-  position: relative;
-  margin-top: 48px;
+.yt-carrossel-wrapper{
+  position:relative;
+  margin-top:48px;
 }
 
-.yt-carrossel {
-  display: flex;
-  gap: 24px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 16px;
+.yt-carrossel{
+  display:flex;
+  gap:24px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding-bottom:16px;
 }
 
-.yt-carrossel::-webkit-scrollbar {
-  display: none;
+.yt-carrossel::-webkit-scrollbar{
+  display:none;
 }
 
-.yt-item {
-  min-width: 70vw;
-  max-width: 900px;
-  flex-shrink: 0;
-  scroll-snap-align: start;
+.yt-item{
+  min-width:70vw;
+  max-width:900px;
+  flex-shrink:0;
+  scroll-snap-align:start;
 }
 
-.yt-item iframe {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 16px 48px rgba(0,0,0,.12);
+.yt-item iframe{
+  width:100%;
+  aspect-ratio:16/9;
+  border:none;
+  border-radius:8px;
+  box-shadow:0 16px 48px rgba(0,0,0,.12);
 }
 
-.seta-yt {
-  position: absolute;
-  top: 40%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,0.92);
-  border: none;
-  color: #0d1b2a;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 20px rgba(0,0,0,.18);
-  transition: transform .2s, box-shadow .2s, opacity .3s;
+.seta-yt{
+  position:absolute;
+  top:40%;
+  transform:translateY(-50%);
+  background:rgba(255,255,255,0.92);
+  border:none;
+  color:#0d1b2a;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  cursor:pointer;
+  z-index:10;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 4px 20px rgba(0,0,0,.18);
+  transition:transform .2s,box-shadow .2s,opacity .3s;
 }
 
-.seta-yt:hover {
-  transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 6px 28px rgba(0,0,0,.28);
+.seta-yt:hover{
+  transform:translateY(-50%) scale(1.1);
+  box-shadow:0 6px 28px rgba(0,0,0,.28);
 }
 
-.seta-yt-esq { left: -22px; }
-.seta-yt-dir { right: -22px; }
+.seta-yt-esq{ left:-22px; }
+.seta-yt-dir{ right:-22px; }
 
-@media (max-width: 768px) {
-  .yt-item { min-width: 90vw; }
-  .btn-spotify-mais { width: 100%; max-width: 320px; text-align: center; }
+@media(max-width:768px){
+  .yt-item{ min-width:90vw; }
+  .btn-spotify-mais{ width:100%; max-width:320px; text-align:center; }
 }
