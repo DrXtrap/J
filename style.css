@@ -517,10 +517,13 @@ footer{
 
 /* BOTÃO OUVIR MAIS NO SPOTIFY */
 
+.btn-spotify-mais-wrapper {
+  text-align: center;
+  margin-top: 32px;
+}
+
 .btn-spotify-mais {
-  display: block;
-  width: fit-content;
-  margin: 32px auto 0;
+  display: inline-block;
   padding: 14px 36px;
   border: 1.5px solid #0d1b2a;
   color: #0d1b2a;
@@ -576,24 +579,24 @@ footer{
   position: absolute;
   top: 40%;
   transform: translateY(-50%);
-  background: #0d1b2a;
+  background: rgba(255,255,255,0.92);
   border: none;
-  color: #ffffff;
-  width: 44px;
-  height: 44px;
+  color: #0d1b2a;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   cursor: pointer;
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(0,0,0,.25);
-  transition: transform .2s, background .2s;
+  box-shadow: 0 4px 20px rgba(0,0,0,.18);
+  transition: transform .2s, box-shadow .2s;
 }
 
 .seta-yt:hover {
-  background: #1b3348;
   transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 28px rgba(0,0,0,.28);
 }
 
 .seta-yt-esq { left: -22px; }
