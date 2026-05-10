@@ -1,78 +1,96 @@
+const DURACAO_SCROLL = 600;
+const TOLERANCIA_SCROLL = 4;
+const GAP_CARROSSEL = 24;
+
 const carrossel = document.getElementById('yt-carrossel');
 const btnEsq = document.getElementById('yt-esq');
 const btnDir = document.getElementById('yt-dir');
 
-function scrollSuave(destino) {
+function animarScroll(destino) {
   const inicio = carrossel.scrollLeft;
   const distancia = destino - inicio;
-  const duracao = 600;
   let startTime = null;
-  function animar(timestamp) {
+
+  function passo(timestamp) {
     if (!startTime) startTime = timestamp;
-    const ease = 1 - Math.pow(1 - Math.min((timestamp - startTime) / duracao, 1), 3);
-    carrossel.scrollLeft = inicio + distancia * ease;
-    if (timestamp - startTime < duracao) requestAnimationFrame(animar);
+    const progresso = Math.min((timestamp - startTime) / DURACAO_SCROLL, 1);
+    carrossel.scrollLeft = inicio + distancia * (1 - Math.pow(1 - progresso, 3));
+    if (progresso < 1) requestAnimationFrame(passo);
   }
-  requestAnimationFrame(animar);
+
+  requestAnimationFrame(passo);
+}
+
+function setSeta(seta, visivel) {
+  seta.style.opacity = visivel ? '1' : '0';
+  seta.style.pointerEvents = visivel ? 'auto' : 'none';
 }
 
 function atualizarSetas() {
-  const noInicio = carrossel.scrollLeft <= 4;
-  const noFim = carrossel.scrollLeft + carrossel.clientWidth >= carrossel.scrollWidth - 4;
-
-  btnEsq.style.opacity = noInicio ? '0' : '1';
-  btnEsq.style.pointerEvents = noInicio ? 'none' : 'auto';
-
-  btnDir.style.opacity = noFim ? '0' : '1';
-  btnDir.style.pointerEvents = noFim ? 'none' : 'auto';
+  setSeta(btnEsq, carrossel.scrollLeft > TOLERANCIA_SCROLL);
+  setSeta(btnDir, carrossel.scrollLeft + carrossel.clientWidth < carrossel.scrollWidth - TOLERANCIA_SCROLL);
 }
 
-btnDir.addEventListener('click', () => {
-  const item = carrossel.querySelector('.yt-item');
-  scrollSuave(carrossel.scrollLeft + item.offsetWidth + 24);
-  setTimeout(atualizarSetas, 650);
-});
+function larguraItem() {
+  return carrossel.querySelector('.yt-item').offsetWidth + GAP_CARROSSEL;
+}
 
-btnEsq.addEventListener('click', () => {
-  const item = carrossel.querySelector('.yt-item');
-  scrollSuave(carrossel.scrollLeft - item.offsetWidth - 24);
-  setTimeout(atualizarSetas, 650);
-});
+btnDir.addEventListener('click', () => animarScroll(carrossel.scrollLeft + larguraItem()));
+btnEsq.addEventListener('click', () => animarScroll(carrossel.scrollLeft - larguraItem()));
 
 carrossel.addEventListener('scroll', atualizarSetas);
 atualizarSetas();
 
-/* PARAR MÍDIA AO TROCAR */
+// Controle de mídia: só uma fonte toca por vez
 
-function pausarTodosYouTube(exceto) {
-  document.querySelectorAll('iframe[src*="youtube"]').forEach(function(iframe) {
-    if (iframe.contentWindow !== exceto) {
-      iframe.contentWindow.postMessage(
-        JSON.stringify({ event: 'command', func: 'pauseVideo', args: '' }), '*'
-      );
-    }
-  });
+function iframesYouTube() {
+  return [...document.querySelectorAll('iframe[src*="youtube"]')];
 }
 
-function pararTodosSpotify(exceto) {
-  document.querySelectorAll('iframe[src*="spotify"]').forEach(function(iframe) {
-    if (iframe.contentWindow !== exceto) {
-      iframe.src = iframe.src;
-    }
-  });
+function iframesSpotify() {
+  return [...document.querySelectorAll('iframe[src*="spotify"]')];
 }
 
-window.addEventListener('message', function(e) {
-  var data;
-  try { data = JSON.parse(e.data); } catch(err) { return; }
+function enviarPauseYouTube(iframe) {
+  iframe.contentWindow.postMessage(
+    JSON.stringify({ event: 'command', func: 'pauseVideo', args: '' }), '*'
+  );
+}
 
-  if (data.type === 'playback_update' && data.payload && !data.payload.isPaused) {
-    pararTodosSpotify(e.source);
-    pausarTodosYouTube(null);
+function recarregarIframe(iframe) {
+  iframe.src = iframe.src;
+}
+
+function pausarOutrosYouTube(janelaTocando) {
+  iframesYouTube().filter(i => i.contentWindow !== janelaTocando).forEach(enviarPauseYouTube);
+}
+
+function pausarTodosYouTube() {
+  iframesYouTube().forEach(enviarPauseYouTube);
+}
+
+function pararOutrosSpotify(janelaTocando) {
+  iframesSpotify().filter(i => i.contentWindow !== janelaTocando).forEach(recarregarIframe);
+}
+
+function pararTodosSpotify() {
+  iframesSpotify().forEach(recarregarIframe);
+}
+
+window.addEventListener('message', (e) => {
+  let data;
+  try { data = JSON.parse(e.data); } catch { return; }
+
+  const spotifyComecou = data.type === 'playback_update' && data.payload && !data.payload.isPaused;
+  const youtubeComecou = data.event === 'infoDelivery' && data.info?.playerState === 1;
+
+  if (spotifyComecou) {
+    pararOutrosSpotify(e.source);
+    pausarTodosYouTube();
   }
 
-  if (data.event === 'infoDelivery' && data.info && data.info.playerState === 1) {
-    pausarTodosYouTube(e.source);
-    pararTodosSpotify(null);
+  if (youtubeComecou) {
+    pausarOutrosYouTube(e.source);
+    pararTodosSpotify();
   }
 });
