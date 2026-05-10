@@ -575,27 +575,28 @@ footer{
   position: absolute;
   top: 40%;
   transform: translateY(-50%);
-  background: rgba(13,27,42,.08);
-  border: 1px solid rgba(13,27,42,.2);
-  color: #0d1b2a;
-  font-size: 24px;
-  width: 48px;
-  height: 48px;
+  background: #0d1b2a;
+  border: none;
+  color: #ffffff;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   cursor: pointer;
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background .3s;
+  box-shadow: 0 4px 16px rgba(0,0,0,.25);
+  transition: transform .2s, background .2s;
 }
 
 .seta-yt:hover {
-  background: rgba(13,27,42,.18);
+  background: #1b3348;
+  transform: translateY(-50%) scale(1.1);
 }
 
-.seta-yt-esq { left: 0; }
-.seta-yt-dir { right: 0; }
+.seta-yt-esq { left: -22px; }
+.seta-yt-dir { right: -22px; }
 
 @media (max-width: 768px) {
   .yt-item { min-width: 90vw; }
