@@ -220,33 +220,12 @@ nav a:hover{
   box-shadow:0 20px 60px rgba(0,0,0,.12);
 }
 
-/* BOTÕES */
-
-.btn-ouvir,
-.btn-booking{
-  width:fit-content;
-
-  padding:16px 38px;
-
-  text-decoration:none;
-  text-transform:uppercase;
-
-  letter-spacing:3px;
-  font-size:13px;
-  font-weight:600;
-
-  border-radius:3px;
-
-  transition:.3s;
-}
-
-.btn-ouvir{
-  background:#0d1b2a;
-  color:#fff;
-}
-
-.btn-ouvir:hover{
-  background:#1b3348;
+.hero-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
 }
 
 .btn-booking{
@@ -399,12 +378,10 @@ footer{
   }
 
   .logo-j{
-  position:static;
-
-  font-size:28px;
-
-  margin-right:auto;
-}
+    position:static;
+    font-size:28px;
+    margin-right:auto;
+  }
 
   nav{
     gap:20px;
@@ -447,7 +424,6 @@ footer{
     max-width:100%;
   }
 
-  .btn-ouvir,
   .btn-booking{
     width:100%;
     max-width:320px;
@@ -500,19 +476,6 @@ footer{
   .n4{ width:200px; }
   .n5{ width:220px; }
 
-}
-
-.hero-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-}
-
-.logo-j {
-  text-decoration: none;
-  color: #0d1b2a;
 }
 
 /* BOTÃO OUVIR MAIS NO SPOTIFY */
