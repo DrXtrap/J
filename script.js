@@ -98,3 +98,31 @@ window.addEventListener('message', (e) => {
     pararTodosSpotify();
   }
 });
+
+// ─── LAZY LOAD FOTOS ───
+
+const observadorFotos = new IntersectionObserver((entradas) => {
+  entradas.forEach((entrada) => {
+    if (!entrada.isIntersecting) return;
+    const wrap = entrada.target;
+    const img = wrap.querySelector('img');
+    if (!img) return;
+
+    function marcarCarregada() {
+      img.classList.add('loaded');
+      wrap.classList.add('loaded');
+    }
+
+    if (img.complete && img.naturalWidth > 0) {
+      marcarCarregada();
+    } else {
+      img.addEventListener('load', marcarCarregada, { once: true });
+    }
+
+    observadorFotos.unobserve(wrap);
+  });
+}, { rootMargin: '150px' });
+
+document.querySelectorAll('.fotos-grid .foto-wrap').forEach((wrap) => {
+  observadorFotos.observe(wrap);
+});
