@@ -1,0 +1,569 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  color:#0d1b2a;
+  background:linear-gradient(160deg,#b8d4e8 0%,#cce3f5 30%,#deeef8 60%,#eef6fb 100%);
+  min-height:100vh;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+.sky{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  overflow:hidden;
+  pointer-events:none;
+}
+
+.nuvem-svg{
+  position:absolute;
+  left:0;
+  opacity:.45;
+  mix-blend-mode:multiply;
+  animation-timing-function:linear;
+  animation-iteration-count:infinite;
+}
+
+.n1{ width:580px; top:3%;  }
+.n2{ width:460px; top:22%; }
+.n3{ width:500px; top:18%; }
+.n4{ width:400px; top:58%; }
+.n5{ width:440px; top:68%; }
+
+@keyframes float-left{
+  from{ transform:translateX(110vw);  }
+  to{   transform:translateX(-700px); }
+}
+
+@keyframes float-right{
+  from{ transform:translateX(-700px); }
+  to{   transform:translateX(110vw);  }
+}
+
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:100;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:22px 48px;
+
+  background:rgba(184,212,232,.55);
+  backdrop-filter:blur(16px);
+
+  border-bottom:1px solid rgba(255,255,255,.4);
+}
+
+.logo-j{
+  position:absolute;
+
+  left:90px;
+
+  font-family:'Cinzel',serif;
+  font-size:34px;
+  font-weight:700;
+
+  color:#0d1b2a;
+
+  line-height:1;
+
+  text-shadow:
+    0 8px 24px rgba(0,0,0,.08);
+}
+
+nav{
+  display:flex;
+  gap:42px;
+}
+
+nav a{
+  color:#0d1b2a;
+  text-decoration:none;
+
+  font-size:13px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+
+  font-weight:600;
+
+  opacity:.7;
+  transition:.3s;
+}
+
+nav a:hover{
+  opacity:1;
+}
+
+#hero{
+  position:relative;
+  z-index:1;
+
+  min-height:100vh;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:140px;
+
+  padding:120px 8vw 80px;
+}
+
+.hero-album{
+  flex-shrink:0;
+}
+
+.album-cover{
+  width:38vw;
+  max-width:620px;
+  min-width:420px;
+
+  aspect-ratio:1/1;
+
+  object-fit:cover;
+  object-position:center top;
+
+  border-radius:12px;
+
+  box-shadow:0 30px 80px rgba(0,0,0,.18);
+}
+
+.hero-info{
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+
+  max-width:700px;
+}
+
+.lancamento-info{
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+}
+
+.hero-label{
+  font-size:14px;
+
+  letter-spacing:5px;
+  text-transform:uppercase;
+
+  color:#5a8faa;
+
+  font-weight:600;
+}
+
+#spotify-player{
+  width:100%;
+  max-width:520px;
+
+  border:none;
+
+  box-shadow:0 20px 60px rgba(0,0,0,.12);
+}
+
+.hero-buttons{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:12px;
+  width:100%;
+}
+
+.btn-booking{
+  display:inline-block;
+  padding:16px 40px;
+  border:1.5px solid #0d1b2a;
+  color:#0d1b2a;
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:3px;
+  font-size:12px;
+  font-weight:600;
+  transition:.3s;
+}
+
+.btn-booking:hover{
+  background:#0d1b2a;
+  color:#fff;
+}
+
+#musicas,
+#fotos,
+#contato{
+  position:relative;
+  z-index:1;
+
+  padding:100px 8vw;
+
+  max-width:1800px;
+  margin:0 auto;
+}
+
+#musicas h2,
+#fotos h2,
+#contato h2{
+  font-family:'Bebas Neue',sans-serif;
+
+  font-size:clamp(72px,6vw,120px);
+
+  letter-spacing:5px;
+
+  margin-bottom:40px;
+}
+
+.musicas-grid{
+  display:grid;
+
+  grid-template-columns:repeat(2,1fr);
+
+  gap:16px;
+
+  max-width:1200px;
+}
+
+.fotos-grid{
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:20px;
+}
+
+.fotos-grid img{
+  width:100%;
+
+  aspect-ratio:3/4;
+
+  object-fit:cover;
+  object-position:center top;
+
+  border-radius:12px;
+
+  transition:transform .3s;
+}
+
+.fotos-grid img:hover{
+  transform:scale(1.02);
+}
+
+#contato{
+  text-align:center;
+}
+
+.contato-sub{
+  font-size:13px;
+
+  letter-spacing:3px;
+  text-transform:uppercase;
+
+  color:#5a8faa;
+
+  margin-bottom:40px;
+}
+
+.contato-links{
+  display:flex;
+  justify-content:center;
+
+  gap:18px;
+
+  flex-wrap:wrap;
+}
+
+.contato-btn{
+  padding:16px 40px;
+
+  border:1.5px solid #0d1b2a;
+
+  color:#0d1b2a;
+
+  text-decoration:none;
+  text-transform:uppercase;
+
+  letter-spacing:3px;
+  font-size:12px;
+  font-weight:600;
+
+  transition:.3s;
+}
+
+.contato-btn:hover{
+  background:#0d1b2a;
+  color:#fff;
+}
+
+footer{
+  position:relative;
+  z-index:1;
+
+  padding:32px;
+
+  text-align:center;
+
+  font-size:12px;
+  letter-spacing:2px;
+
+  color:#5a8faa;
+
+  border-top:1px solid rgba(255,255,255,.5);
+}
+
+@media(max-width:768px){
+
+  header{
+    padding:16px 20px;
+  }
+
+  .logo-j{
+    position:static;
+    font-size:28px;
+    margin-right:auto;
+  }
+
+  nav{
+    gap:20px;
+  }
+
+  nav a{
+    font-size:11px;
+    letter-spacing:2px;
+  }
+
+  #hero{
+    flex-direction:column;
+
+    text-align:center;
+
+    gap:40px;
+
+    padding:120px 20px 60px;
+
+    min-height:auto;
+  }
+
+  .hero-info{
+    align-items:center;
+    width:100%;
+  }
+
+  .lancamento-info{
+    align-items:center;
+    width:100%;
+  }
+
+  .album-cover{
+    width:100%;
+    max-width:320px;
+    min-width:auto;
+  }
+
+  #spotify-player{
+    max-width:100%;
+  }
+
+  .btn-booking{
+    width:100%;
+    max-width:320px;
+
+    text-align:center;
+
+    font-size:11px;
+  }
+
+  #musicas,
+  #fotos,
+  #contato{
+    padding:70px 20px;
+  }
+
+  #musicas h2,
+  #fotos h2,
+  #contato h2{
+    font-size:58px;
+    text-align:center;
+  }
+
+  .musicas-grid{
+    grid-template-columns:1fr;
+  }
+
+  .fotos-grid{
+    grid-template-columns:1fr;
+  }
+
+  .contato-links{
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .contato-btn{
+    width:100%;
+    max-width:300px;
+
+    text-align:center;
+  }
+
+  .nuvem-svg{
+    opacity:.18;
+  }
+
+  .n1{ width:260px; }
+  .n2{ width:220px; }
+  .n3{ width:240px; }
+  .n4{ width:200px; }
+  .n5{ width:220px; }
+
+}
+
+.btn-spotify-mais-wrapper{
+  text-align:center;
+  margin-top:32px;
+}
+
+.btn-spotify-mais{
+  display:inline-block;
+  padding:14px 36px;
+  border:1.5px solid #0d1b2a;
+  color:#0d1b2a;
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:3px;
+  font-size:12px;
+  font-weight:600;
+  border-radius:3px;
+  transition:.3s;
+}
+
+.btn-spotify-mais:hover{
+  background:#0d1b2a;
+  color:#fff;
+}
+
+.yt-carrossel-wrapper{
+  position:relative;
+  margin-top:48px;
+}
+
+.yt-carrossel{
+  display:flex;
+  gap:24px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding-bottom:16px;
+}
+
+.yt-carrossel::-webkit-scrollbar{
+  display:none;
+}
+
+.yt-item{
+  min-width:70vw;
+  max-width:900px;
+  flex-shrink:0;
+  scroll-snap-align:start;
+}
+
+.yt-item iframe{
+  width:100%;
+  aspect-ratio:16/9;
+  border:none;
+  border-radius:8px;
+  box-shadow:0 16px 48px rgba(0,0,0,.12);
+}
+
+.seta-yt{
+  position:absolute;
+  top:40%;
+  transform:translateY(-50%);
+  background:rgba(255,255,255,0.92);
+  border:none;
+  color:#0d1b2a;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  cursor:pointer;
+  z-index:10;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 4px 20px rgba(0,0,0,.18);
+  transition:transform .2s,box-shadow .2s,opacity .3s;
+}
+
+.seta-yt:hover{
+  transform:translateY(-50%) scale(1.1);
+  box-shadow:0 6px 28px rgba(0,0,0,.28);
+}
+
+.seta-yt-esq{ left:-22px; }
+.seta-yt-dir{ right:-22px; }
+
+@media(max-width:768px){
+  .yt-item{ min-width:90vw; }
+  .btn-spotify-mais{ width:100%; max-width:320px; text-align:center; }
+}
+
+/* ─── LAZY LOAD & SKELETON ─── */
+
+@keyframes shimmer-claro {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* Wrapper: define o layout e exibe skeleton enquanto a foto não carregou */
+.fotos-grid .foto-wrap {
+  position: relative;
+  aspect-ratio: 3/4;
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #c0d9ea 25%, #d4ebf7 50%, #c0d9ea 75%);
+  background-size: 200% 100%;
+  animation: shimmer-claro 1.6s infinite linear;
+}
+
+.fotos-grid .foto-wrap.loaded {
+  animation: none;
+  background: none;
+}
+
+/* Img dentro do wrapper: ocupa 100% e aparece com fade */
+.fotos-grid .foto-wrap img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: unset;
+  border-radius: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.3s;
+}
+
+.fotos-grid .foto-wrap img.loaded {
+  opacity: 1;
+}
+
+/* Mantém hover de scale no wrapper */
+.fotos-grid .foto-wrap:hover img {
+  transform: scale(1.02);
+}
